@@ -122,13 +122,6 @@ export default function RootLayout({
         "closes": "22:00",
       },
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "184",
-      "bestRating": "5",
-      "worstRating": "1",
-    },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Layanan Pembiayaan BPKB",

@@ -13,7 +13,6 @@ import {
   BadgeCheck,
   Wallet,
   Clock,
-  Star,
   Quote,
 } from "lucide-react";
 import QuickApplicationForm from "@/components/QuickApplicationForm";
@@ -22,7 +21,6 @@ import {
   LOAN_PRODUCTS,
   TRUST_STATS,
   HOW_IT_WORKS,
-  TESTIMONIALS,
   FAQ_LIST,
   SITE_CONFIG,
 } from "@/lib/constants";
@@ -449,50 +447,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION (E-E-A-T & SOCIAL PROOF) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-testimonials-title">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-2.5">
-          <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#E8F8F0] px-3.5 py-1 rounded-full border border-emerald-200">
-            Bukti Kepuasan Nasabah
-          </span>
-          <h2 id="section-testimonials-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A335D] tracking-tight">
-            Pengalaman Nasabah Pinjaman Gadai BPKB
-          </h2>
-          <p className="text-sm sm:text-base text-[#64748B]">
-            Ratusan nasabah telah merasakan kemudahan pencairan dana tunai jaminan BPKB bersama kami.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((testi, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-[12px] p-6 sm:p-7 border border-[#E2E8F0] shadow-soft flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center space-x-1 text-amber-400">
-                  {[...Array(testi.rating)].map((_, rIdx) => (
-                    <Star key={rIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-[#0F172A] italic leading-relaxed">
-                  &ldquo;{testi.comment}&rdquo;
-                </p>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-[#E2E8F0] flex items-center justify-between">
-                <div>
-                  <h3 className="font-heading font-bold text-sm text-[#0A335D]">{testi.name}</h3>
-                  <p className="text-xs text-[#64748B]">{testi.location}</p>
-                  <span className="inline-block mt-1 text-[11px] font-semibold text-[#049851] bg-[#E8F8F0] px-2 py-0.5 rounded">
-                    {testi.amount} ({testi.loanType})
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* FAQ SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-faq-title">
