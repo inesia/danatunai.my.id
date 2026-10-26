@@ -45,67 +45,67 @@ export default function QuickApplicationForm({
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-200/90 overflow-hidden">
-      {/* Header Accent */}
-      <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 p-5 sm:p-6 text-white">
-        <div className="flex items-center justify-between mb-2">
-          <span className="inline-flex items-center space-x-1.5 bg-white/20 text-blue-100 text-[11px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
-            <Clock className="w-3.5 h-3.5 text-emerald-300" />
-            <span>Respon Cepat &bull; 1 Hari Cair</span>
+    <div className="bg-white rounded-[12px] shadow-soft border border-[#E2E8F0] overflow-hidden">
+      {/* Brand Header - Dana Navy #0A335D */}
+      <div className="bg-[#0A335D] p-5 sm:p-6 text-white border-b border-[#061F38]">
+        <div className="flex items-center justify-between mb-2.5">
+          <span className="inline-flex items-center space-x-1.5 bg-[#061F38] text-slate-200 text-[11px] font-medium px-2.5 py-1 rounded-full border border-blue-900/60">
+            <Clock className="w-3.5 h-3.5 text-[#049851]" />
+            <span>Respon Cepat 5-10 Menit</span>
           </span>
-          <span className="text-[11px] font-medium text-blue-200 flex items-center space-x-1">
-            <Lock className="w-3 h-3 text-emerald-400" />
-            <span>Data 100% Aman</span>
+          <span className="text-[11px] text-slate-300 flex items-center space-x-1">
+            <Lock className="w-3 h-3 text-[#049851]" />
+            <span>Kerahasiaan Terjamin</span>
           </span>
         </div>
-        <h3 className="text-xl sm:text-2xl font-black tracking-tight">{title}</h3>
-        <p className="text-xs sm:text-sm text-blue-100/90 mt-1">{subtitle}</p>
+        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">{title}</h3>
+        <p className="text-xs sm:text-sm text-slate-300 mt-1">{subtitle}</p>
       </div>
 
       {/* Form Content */}
       <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4">
-        {/* Vehicle Type Tabs */}
+        {/* Unified Segmented Control */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-            Pilih Jenis Agunan Kendaraan
+          <label className="block text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-2">
+            Pilih Kategori Agunan
           </label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="bg-[#F8FAFC] p-1 rounded-[12px] grid grid-cols-3 gap-1 border border-[#E2E8F0]">
             <button
               type="button"
               onClick={() => setVehicleCategory("Mobil")}
-              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-[8px] text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 vehicleCategory === "Mobil"
-                  ? "bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-500/20"
-                  : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+                  ? "bg-white text-[#0A335D] shadow-sm border border-[#E2E8F0]"
+                  : "text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
-              <Car className="w-4 h-4 shrink-0" />
+              <Car className="w-4 h-4 text-[#0A335D] shrink-0" />
               <span>Mobil</span>
             </button>
 
             <button
               type="button"
               onClick={() => setVehicleCategory("Motor")}
-              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-[8px] text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 vehicleCategory === "Motor"
-                  ? "bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/20"
-                  : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+                  ? "bg-white text-[#049851] shadow-sm border border-[#E2E8F0]"
+                  : "text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
-              <Bike className="w-4 h-4 shrink-0" />
+              <Bike className="w-4 h-4 text-[#049851] shrink-0" />
               <span>Motor</span>
             </button>
 
             <button
               type="button"
               onClick={() => setVehicleCategory("Komersial")}
-              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition-all ${
+              className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-[8px] text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 vehicleCategory === "Komersial"
-                  ? "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                  : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+                  ? "bg-white text-[#0A335D] shadow-sm border border-[#E2E8F0]"
+                  : "text-[#64748B] hover:text-[#0F172A]"
               }`}
             >
-              <Truck className="w-4 h-4 shrink-0" />
+              <Truck className="w-4 h-4 text-[#0A335D] shrink-0" />
               <span>Truk / Pick Up</span>
             </button>
           </div>
@@ -113,21 +113,21 @@ export default function QuickApplicationForm({
 
         {/* Input Nama Lengkap */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap</label>
+          <label className="block text-xs font-semibold text-[#0F172A] mb-1">Nama Lengkap</label>
           <input
             type="text"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Nama Anda (sesuai KTP)"
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400"
+            className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all placeholder:text-[#64748B]/60 bg-white"
           />
         </div>
 
         {/* Merk & Tahun Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
           <div className="sm:col-span-8">
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-[#0F172A] mb-1">
               Merk & Tipe Kendaraan
             </label>
             <input
@@ -140,18 +140,18 @@ export default function QuickApplicationForm({
                   ? "Contoh: Honda Vario 160 / NMAX"
                   : vehicleCategory === "Komersial"
                   ? "Contoh: Mitsubishi Canter / GranMax"
-                  : "Contoh: Toyota Avanza G / Innova"
+                  : "Contoh: Toyota Avanza G / Innova Reborn"
               }
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all placeholder:text-[#64748B]/60 bg-white"
             />
           </div>
 
           <div className="sm:col-span-4">
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Tahun Unit</label>
+            <label className="block text-xs font-semibold text-[#0F172A] mb-1">Tahun Unit</label>
             <select
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm bg-white focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all cursor-pointer"
             >
               {yearOptions.map((y) => (
                 <option key={y} value={y}>
@@ -165,7 +165,7 @@ export default function QuickApplicationForm({
         {/* Kota Domisili & Status Pajak */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
           <div className="sm:col-span-7">
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-[#0F172A] mb-1">
               Kota / Wilayah Domisili
             </label>
             <input
@@ -174,16 +174,16 @@ export default function QuickApplicationForm({
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="Contoh: Jakarta / Surabaya / Bandung"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all placeholder:text-[#64748B]/60 bg-white"
             />
           </div>
 
           <div className="sm:col-span-5">
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Status Pajak</label>
+            <label className="block text-xs font-semibold text-[#0F172A] mb-1">Status Pajak STNK</label>
             <select
               value={taxStatus}
               onChange={(e) => setTaxStatus(e.target.value as "Hidup" | "Mati / Telat")}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm bg-white focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all cursor-pointer"
             >
               <option value="Hidup">Pajak Hidup</option>
               <option value="Mati / Telat">Pajak Mati / Telat (Bisa)</option>
@@ -194,17 +194,17 @@ export default function QuickApplicationForm({
         {/* Kebutuhan Dana */}
         <div>
           <div className="flex justify-between items-center mb-1">
-            <label className="block text-xs font-semibold text-slate-700">
-              Estimasi Kebutuhan Dana (Plafon)
+            <label className="block text-xs font-semibold text-[#0F172A]">
+              Estimasi Plafon yang Dibutuhkan
             </label>
-            <span className="text-[11px] text-slate-500 font-medium">Bisa diketik manual</span>
+            <span className="text-[11px] text-[#64748B] font-medium">Bisa ketik manual</span>
           </div>
           <input
             type="text"
             value={loanAmount}
             onChange={(e) => setLoanAmount(e.target.value)}
             placeholder="Contoh: Rp 50.000.000 atau 75 Juta"
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400"
+            className="w-full px-3.5 py-2.5 rounded-[12px] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:border-[#049851] focus:ring-1 focus:ring-[#049851] transition-all placeholder:text-[#64748B]/60 bg-white"
           />
           {/* Quick preset chips */}
           <div className="flex flex-wrap gap-1.5 mt-2">
@@ -213,10 +213,10 @@ export default function QuickApplicationForm({
                 key={preset}
                 type="button"
                 onClick={() => setLoanAmount(preset)}
-                className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
+                className={`text-[11px] font-medium px-2.5 py-1 rounded-[8px] border transition-colors cursor-pointer ${
                   loanAmount === preset
-                    ? "bg-blue-100 border-blue-300 text-blue-800"
-                    : "bg-slate-100 border-slate-200 text-slate-600 hover:bg-slate-200"
+                    ? "bg-[#E8F8F0] border-[#049851] text-[#049851] font-semibold"
+                    : "bg-[#F8FAFC] border-[#E2E8F0] text-[#64748B] hover:bg-slate-100"
                 }`}
               >
                 {preset}
@@ -225,33 +225,36 @@ export default function QuickApplicationForm({
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Submit Button - Tunai Green #049851 */}
         <div className="pt-2">
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40 transition-all duration-200 transform hover:-translate-y-0.5 text-sm sm:text-base cursor-pointer"
+            className="w-full inline-flex items-center justify-center space-x-2 bg-[#049851] hover:bg-[#067A42] active:bg-[#036E3A] text-white font-semibold py-3.5 px-6 rounded-[12px] shadow-soft transition-all duration-150 text-sm sm:text-base cursor-pointer"
           >
             <Send className="w-4 h-4" />
-            <span>Ajukan Sekarang via WhatsApp</span>
+            <span>Cek Taksiran & Konsultasi via WhatsApp</span>
           </button>
+          <p className="text-[11px] text-center text-[#64748B] mt-2">
+            Konsultasi 100% gratis & tanpa potongan biaya pendaftaran awal.
+          </p>
         </div>
 
         {/* Trust Points Under Submit */}
-        <div className="pt-2 grid grid-cols-2 gap-2 text-[11px] text-slate-600 border-t border-slate-100">
+        <div className="pt-3 grid grid-cols-2 gap-2 text-[11px] text-[#64748B] border-t border-[#E2E8F0]">
           <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#049851] shrink-0" />
             <span>Tanpa Biaya Survei</span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-            <span>BPKB Aman di BFI Finance</span>
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#049851] shrink-0" />
+            <span>Agunan Aman di BFI Finance</span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-            <span>Pajak Mati Dibantu</span>
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#049851] shrink-0" />
+            <span>Pajak Mati Bisa Diproses</span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#049851] shrink-0" />
             <span>Pencairan Masuk Utuh</span>
           </div>
         </div>

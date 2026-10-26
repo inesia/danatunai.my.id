@@ -1,106 +1,193 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ShieldCheck,
-  Zap,
-  CheckCircle,
+  CheckCircle2,
   Car,
   Bike,
-  Clock,
-  Percent,
-  Banknote,
   ArrowRight,
   PhoneCall,
   FileCheck2,
   Lock,
-  ThumbsUp,
+  Building2,
+  BadgeCheck,
+  Wallet,
+  Clock,
+  Star,
+  Quote,
 } from "lucide-react";
 import QuickApplicationForm from "@/components/QuickApplicationForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { LOAN_PRODUCTS, TRUST_STATS, HOW_IT_WORKS, SITE_CONFIG } from "@/lib/constants";
+import {
+  LOAN_PRODUCTS,
+  TRUST_STATS,
+  HOW_IT_WORKS,
+  TESTIMONIALS,
+  FAQ_LIST,
+  SITE_CONFIG,
+} from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Pinjaman Dana Tunai Jaminan BPKB Mobil & Motor — Cepat 1 Hari Cair",
+  description:
+    "Solusi pinjaman dana tunai cepat jaminan BPKB Mobil & Motor resmi BFI Finance. Bunga ringan mulai 0.6%, plafon hingga 2 Miliar, pencairan utuh, aman diawasi OJK.",
+  alternates: {
+    canonical: "./",
+  },
+};
 
 export default function HomePage() {
+  // Rich Structured Data for FAQPage and WebSite
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_LIST.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_CONFIG.siteUrl}/#webpage`,
+    "url": SITE_CONFIG.siteUrl,
+    "name": "Pinjaman Dana Tunai Jaminan BPKB Mobil & Motor — Cepat 1 Hari Cair",
+    "description": SITE_CONFIG.description,
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": `${SITE_CONFIG.siteUrl}/#website`,
+      "url": SITE_CONFIG.siteUrl,
+      "name": SITE_CONFIG.name,
+      "publisher": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.name,
+        "logo": `${SITE_CONFIG.siteUrl}/logo.png`,
+      },
+    },
+    "about": [
+      {
+        "@type": "FinancialProduct",
+        "name": "Gadai BPKB Mobil",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "IDR",
+          "lowPrice": "20000000",
+          "highPrice": "2000000000",
+        },
+      },
+      {
+        "@type": "FinancialProduct",
+        "name": "Gadai BPKB Motor",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "IDR",
+          "lowPrice": "2000000",
+          "highPrice": "50000000",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="space-y-16 md:space-y-24">
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-slate-50 pt-8 pb-16 md:pt-14 md:pb-24 border-b border-slate-200/60">
-        {/* Background glow orbs */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-400/10 rounded-full blur-3xl -z-10 pointer-events-none" />
-        <div className="absolute top-1/3 -right-20 w-[400px] h-[300px] bg-amber-400/10 rounded-full blur-3xl -z-10 pointer-events-none" />
+      {/* Inject Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
 
+      {/* HERO SECTION */}
+      <section className="relative bg-white border-b border-[#E2E8F0] pt-8 pb-16 md:pt-14 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Headlines & Benefits */}
+            {/* Left Column: Headlines & Editorial Presentation */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 bg-blue-100/80 border border-blue-200 text-blue-800 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm">
-                <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>Mitra Resmi BFI Finance &bull; Terdaftar & Diawasi OJK</span>
+              {/* Compliance & Partner Status Pill - 999px */}
+              <div className="inline-flex items-center space-x-2 bg-[#E8F8F0] border border-emerald-200/90 text-[#049851] px-4 py-1.5 rounded-full text-xs font-semibold">
+                <ShieldCheck className="w-4 h-4 text-[#049851] shrink-0" />
+                <span>Mitra Agen Resmi BFI Finance &bull; Terdaftar & Diawasi OJK</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
-                Solusi Dana Cepat Jaminan{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600">
+              {/* Display 48px Bold Headline (Single H1) */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[48px] font-heading font-bold text-[#0A335D] tracking-tight leading-[1.2]">
+                Pinjaman <span className="text-[#0A335D]">Dana</span>
+                <span className="text-[#049851]">Tunai</span> Cepat Jaminan{" "}
+                <span className="text-[#0A335D] underline decoration-[#049851] underline-offset-8">
                   BPKB Mobil & Motor
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Dapatkan pencairan dana tunai hingga <strong>85% dari nilai kendaraan</strong> dengan suku bunga rendah mulai <strong>0.6% flat/bulan</strong>. BPKB aman tersimpan di BFI Finance, kendaraan tetap Anda gunakan.
+              <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                Dapatkan fasilitas pencairan dana cepat hingga <strong>85% dari nilai pasar kendaraan</strong> dengan suku bunga rendah mulai <strong>0.6% flat per bulan</strong>. Dokumen BPKB aman tersimpan di kantor cabang resmi BFI Finance, kendaraan tetap Anda gunakan.
               </p>
 
-              {/* Key Bullet Highlights */}
-              <div className="grid grid-cols-2 gap-3 pt-2 text-left max-w-lg mx-auto lg:mx-0">
-                <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+              {/* Editorial Feature Highlights */}
+              <div className="grid grid-cols-2 gap-3.5 pt-2 text-left max-w-lg mx-auto lg:mx-0">
+                <div className="flex items-start space-x-2 text-xs sm:text-sm text-[#0F172A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0 mt-0.5" />
                   <span>Proses 1 Hari Langsung Cair</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="flex items-start space-x-2 text-xs sm:text-sm text-[#0F172A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0 mt-0.5" />
                   <span>Pajak Mati & Plat Daerah Bisa</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Tanpa Biaya Survei</span>
+                <div className="flex items-start space-x-2 text-xs sm:text-sm text-[#0F172A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0 mt-0.5" />
+                  <span>Tanpa Biaya Potongan Siluman</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="flex items-start space-x-2 text-xs sm:text-sm text-[#0F172A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0 mt-0.5" />
                   <span>Pencairan Masuk Rekening Utuh</span>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-4">
+              {/* Buttons: Primary #049851 & Secondary #0A335D */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-3">
                 <a
-                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%20Mas%20${encodeURIComponent(
-                    SITE_CONFIG.agentName
-                  )}%2C%20saya%20ingin%20konsultasi%20pinjaman%20dana%20tunai%20jaminan%20BPKB.%20Mohon%20info%20syarat%20dan%20proses%20pengajuannya.`}
+                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%2C%20saya%20ingin%20konsultasi%20pinjaman%20dana%20tunai%20jaminan%20BPKB.%20Mohon%20info%20taksiran%20dan%20syaratnya.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40 transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-[#049851] hover:bg-[#067A42] text-white font-semibold py-3.5 px-7 rounded-[12px] shadow-soft transition-colors text-[16px] cursor-pointer"
                 >
-                  <PhoneCall className="w-5 h-5 animate-pulse" />
-                  <span>Konsultasi WA Cepat</span>
+                  <PhoneCall className="w-4 h-4" />
+                  <span>Konsultasi via WhatsApp</span>
                 </a>
                 <Link
                   href="/cek-limit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white hover:bg-slate-50 text-slate-800 font-bold py-4 px-7 rounded-xl border border-slate-300 shadow-sm hover:border-slate-400 transition-all duration-200"
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-[#0A335D] hover:bg-[#082849] text-white font-semibold py-3.5 px-6 rounded-[12px] transition-colors text-[16px]"
                 >
                   <span>Form Pengajuan</span>
-                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                  <ArrowRight className="w-4 h-4 text-slate-300" />
                 </Link>
               </div>
 
-              {/* Social Proof Mini */}
-              <div className="pt-2 flex items-center justify-center lg:justify-start space-x-3 text-xs text-slate-500">
-                <span className="flex -space-x-2">
-                  <span className="inline-block w-7 h-7 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">BFI</span>
-                  <span className="inline-block w-7 h-7 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">OJK</span>
-                  <span className="inline-block w-7 h-7 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">★5</span>
-                </span>
-                <span>Dipercaya ribuan nasabah di seluruh Indonesia</span>
+              {/* Authentic Accreditation Strip */}
+              <div className="pt-4 border-t border-[#E2E8F0] flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#64748B]">
+                <div className="flex items-center space-x-1.5">
+                  <Building2 className="w-4 h-4 text-[#0A335D]" />
+                  <span className="font-medium text-[#0F172A]">PT BFI Finance Indonesia Tbk</span>
+                </div>
+                <div className="flex items-center space-x-1.5">
+                  <BadgeCheck className="w-4 h-4 text-[#049851]" />
+                  <span className="font-medium text-[#0F172A]">Terdaftar & Diawasi OJK</span>
+                </div>
+                <div className="flex items-center space-x-1.5">
+                  <Lock className="w-4 h-4 text-[#64748B]" />
+                  <span className="font-medium text-[#0F172A]">Kerahasiaan Data Terjamin</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Quick Lead Application Form */}
+            {/* Right Column: Application Form */}
             <div className="lg:col-span-5">
               <QuickApplicationForm defaultType="Mobil" />
             </div>
@@ -108,208 +195,241 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {TRUST_STATS.map((s, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow text-center"
-            >
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-700 tracking-tight">
-                {s.value}
+      {/* STATS BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Statistik Layanan">
+        <div className="bg-white rounded-[12px] border border-[#E2E8F0] p-6 sm:p-8 shadow-soft">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y lg:divide-y-0 lg:divide-x divide-[#E2E8F0]">
+            {TRUST_STATS.map((s, idx) => (
+              <div
+                key={idx}
+                className={`text-center ${idx > 0 && idx % 2 === 0 ? "pt-6 lg:pt-0" : ""} ${idx > 0 ? "lg:px-4" : ""}`}
+              >
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#0A335D] tracking-tight">
+                  {s.value}
+                </div>
+                <div className="font-semibold text-[#0F172A] text-xs sm:text-sm mt-1">
+                  {s.label}
+                </div>
+                <div className="text-xs text-[#64748B] mt-0.5">{s.desc}</div>
               </div>
-              <div className="font-bold text-slate-900 text-sm sm:text-base mt-1">
-                {s.label}
-              </div>
-              <div className="text-xs text-slate-500 mt-0.5">{s.desc}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* PRODUK PINJAMAN UTAMA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-            PILIHAN LAYANAN
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-products-title">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-2.5">
+          <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#E8F8F0] px-3.5 py-1 rounded-full border border-emerald-200">
+            Pilihan Agunan Kendaraan
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            Produk Pinjaman Dana Tunai Resmi BFI Finance
+          <h2 id="section-products-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A335D] tracking-tight">
+            Produk Pinjaman Jaminan BPKB Mobil & Motor
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Pilih jenis agunan kendaraan Anda untuk mendapatkan taksiran plafon maksimal dengan bunga paling kompetitif.
+          <p className="text-sm sm:text-base text-[#64748B]">
+            Pilih fasilitas agunan sesuai kebutuhan modal usaha, investasi, biaya pendidikan, atau kebutuhan mendadak Anda.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {LOAN_PRODUCTS.map((prod) => (
-            <div
+            <article
               key={prod.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-[12px] p-6 sm:p-8 border border-[#E2E8F0] shadow-soft flex flex-col justify-between hover:border-slate-300 transition-colors"
             >
               <div className="space-y-6">
                 <div className="flex justify-between items-start">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200 shadow-sm">
-                    {prod.id === "bpkb-mobil" ? <Car className="w-7 h-7" /> : <Bike className="w-7 h-7" />}
+                  <div className="w-12 h-12 rounded-[12px] bg-dna-gradient text-white flex items-center justify-center font-bold shadow-sm">
+                    {prod.id === "bpkb-mobil" ? <Car className="w-6 h-6 text-white" /> : <Bike className="w-6 h-6 text-white" />}
                   </div>
-                  <span className="inline-block bg-amber-50 text-amber-700 font-bold text-xs px-3 py-1.5 rounded-full border border-amber-200">
+                  <span className="inline-block bg-[#E8F8F0] text-[#049851] font-semibold text-xs px-3 py-1 rounded-full border border-emerald-200">
                     {prod.badge}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">{prod.title}</h3>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">{prod.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#0A335D]">{prod.title}</h3>
+                  <p className="text-sm text-[#64748B] mt-2 leading-relaxed">{prod.description}</p>
                 </div>
 
-                {/* Metric pills */}
-                <div className="grid grid-cols-2 gap-2 text-xs bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                  <div>
-                    <span className="text-slate-400 block font-medium">Suku Bunga:</span>
-                    <strong className="text-blue-700 font-bold">{prod.rate}</strong>
+                {/* Structured Spec Sheet */}
+                <div className="bg-[#F8FAFC] p-4 rounded-[12px] border border-[#E2E8F0] space-y-2 text-xs">
+                  <div className="flex justify-between items-center py-1 border-b border-[#E2E8F0]">
+                    <span className="text-[#64748B]">Estimasi Suku Bunga:</span>
+                    <strong className="text-[#0A335D] font-semibold">{prod.rate}</strong>
                   </div>
-                  <div>
-                    <span className="text-slate-400 block font-medium">Waktu Proses:</span>
-                    <strong className="text-emerald-700 font-bold">{prod.processTime}</strong>
+                  <div className="flex justify-between items-center py-1 border-b border-[#E2E8F0]">
+                    <span className="text-[#64748B]">Estimasi Waktu Pencairan:</span>
+                    <strong className="text-[#049851] font-semibold">{prod.processTime}</strong>
                   </div>
-                  <div className="col-span-2 pt-1 border-t border-slate-200/60 mt-1">
-                    <span className="text-slate-400 block font-medium">Syarat Tahun:</span>
-                    <span className="text-slate-700 font-semibold">{prod.yearRequirement}</span>
+                  <div className="flex justify-between items-center py-1 border-b border-[#E2E8F0]">
+                    <span className="text-[#64748B]">Pilihan Tenor Angsuran:</span>
+                    <span className="text-[#0F172A] font-medium">{prod.tenor}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-[#64748B]">Kriteria Tahun Unit:</span>
+                    <span className="text-[#0F172A] font-medium text-right">{prod.yearRequirement}</span>
                   </div>
                 </div>
 
-                {/* Features list */}
+                {/* Features list with Tunai Green checkmark */}
                 <div className="space-y-2.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
                     Keunggulan Program:
                   </span>
                   {prod.features.map((feat, fidx) => (
-                    <div key={fidx} className="flex items-start space-x-2 text-xs sm:text-sm text-slate-700">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <div key={fidx} className="flex items-start space-x-2 text-xs sm:text-sm text-[#0F172A]">
+                      <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+              {/* Action Buttons: Button Secondary & Button Primary */}
+              <div className="pt-6 mt-6 border-t border-[#E2E8F0] flex flex-col sm:flex-row gap-3">
                 <Link
                   href={prod.slug}
-                  className="flex-1 text-center py-3 px-4 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20 transition-all duration-200"
+                  className="flex-1 text-center py-3 px-4 rounded-[12px] font-semibold text-sm bg-[#0A335D] hover:bg-[#082849] text-white transition-colors"
                 >
                   Detail & Syarat Lengkap
                 </Link>
                 <a
-                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%20Mas%20${encodeURIComponent(
-                    SITE_CONFIG.agentName
-                  )}%2C%20saya%20tertarik%20dengan%20program%20${encodeURIComponent(
+                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%2C%20saya%20tertarik%20dengan%20program%20${encodeURIComponent(
                     prod.title
                   )}.%20Bisa%20bantu%20taksir%20nilai%20pencairan%20dan%20persyaratannya%3F`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-center py-3 px-5 rounded-xl font-bold text-sm bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition-colors flex items-center justify-center space-x-1.5"
+                  className="text-center py-3 px-5 rounded-[12px] font-semibold text-sm bg-[#E8F8F0] hover:bg-emerald-100 text-[#049851] border border-emerald-200 transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
                 >
-                  <PhoneCall className="w-4 h-4 text-emerald-600" />
-                  <span>Chat WA</span>
+                  <PhoneCall className="w-4 h-4 text-[#049851]" />
+                  <span>Chat via WhatsApp</span>
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* MENGAPA MEMILIH KAMI / KEUNGGULAN */}
-      <section className="bg-slate-900 text-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest bg-blue-900/60 px-3 py-1 rounded-full border border-blue-700/60">
-              KENAPA HARUS KAMI
+      {/* REFINED SECURITY & TRANSPARENCY SECTION - Dana Navy #0A335D */}
+      <section className="bg-[#0A335D] text-white py-16 md:py-20 rounded-[20px] mx-4 sm:mx-6 lg:mx-8 shadow-modal" aria-labelledby="section-security-title">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+            <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#061F38] px-3.5 py-1 rounded-full border border-blue-900/60">
+              Standar Layanan & Kepatuhan OJK
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">
-              Keuntungan Mengajukan Pinjaman Bersama Kami
+            <h2 id="section-security-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold tracking-tight">
+              Kenapa Memilih Pengajuan Gadai BPKB Bersama Kami?
             </h2>
-            <p className="text-sm sm:text-base text-slate-400">
-              Pengalaman pembiayaan yang transparan, mudah, dan didukung penuh oleh jaringan BFI Finance.
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              Jaminan keamanan dokumen asli tersimpan resmi di kantor cabang dan pendampingan personal langsung dari awal hingga dana cair.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center">
-                <Lock className="w-6 h-6" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* Left: Financial Security Pillars */}
+            <div className="space-y-4">
+              <div className="bg-[#061F38] p-5 sm:p-6 rounded-[12px] border border-blue-900/60 flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-[12px] bg-dna-gradient text-white flex items-center justify-center shrink-0">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-base text-white">BPKB Tersimpan Aman di Brankas Resmi Cabang</h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    Dokumen BPKB Anda langsung disimpan di brankas kantor cabang BFI Finance resmi yang diawasi OJK. Bebas risiko penyalahgunaan pihak ketiga.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-lg font-bold">BPKB 100% Aman Terjamin</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Dokumen BPKB asli Anda disimpan langsung di brankas kantor cabang BFI Finance resmi yang diawasi OJK, bukan pihak ketiga yang mencurigakan.
-              </p>
+
+              <div className="bg-[#061F38] p-5 sm:p-6 rounded-[12px] border border-blue-900/60 flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-[12px] bg-dna-gradient text-white flex items-center justify-center shrink-0">
+                  <Wallet className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-base text-white">Pencairan Dana Utuh & Tanpa Biaya Tersembunyi</h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    Semua rincian biaya dan taksiran plafon diinformasikan transparan di depan. Tanpa biaya survei fiktif atau potongan liar.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-[#061F38] p-5 sm:p-6 rounded-[12px] border border-blue-900/60 flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-[12px] bg-dna-gradient text-white flex items-center justify-center shrink-0">
+                  <FileCheck2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-base text-white">Pajak Mati & Balik Nama Bisa Dibantu</h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    Pajak STNK mati atau unit belum atas nama sendiri tetap dapat diproses melalui mekanisme pengurusan resmi bersama tim kami.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
-                <Zap className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold">Proses Kilat 1 Hari Cair</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Proses berkas cepat tanpa birokrasi berbelit-belit. Untuk motor bisa 1-2 jam cair, untuk mobil rata-rata 1 hari kerja dana sudah masuk rekening.
-              </p>
-            </div>
+            {/* Right: Personal Consultant Card */}
+            <div className="bg-[#061F38] rounded-[12px] p-6 sm:p-8 border border-blue-900/60 flex flex-col justify-between">
+              <div className="space-y-5">
+                <div className="inline-flex items-center space-x-2 text-xs font-semibold text-[#049851] bg-[#0A335D] border border-emerald-900/60 px-3.5 py-1 rounded-full">
+                  <BadgeCheck className="w-4 h-4 text-[#049851]" />
+                  <span>Konsultan Agen Terverifikasi</span>
+                </div>
 
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-amber-600/20 text-amber-400 flex items-center justify-center">
-                <Banknote className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold">Pencairan Maksimal & Bersih</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Taksiran unit tertinggi di kelasnya hingga 85%. Tanpa potongan liar atau biaya administrasi fiktif. Dana masuk rekening utuh.
-              </p>
-            </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
+                    Konsultan Kemitraan Resmi
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1">
+                    Mitra Resmi PT BFI Finance Indonesia Tbk
+                  </p>
+                </div>
 
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-sky-600/20 text-sky-400 flex items-center justify-center">
-                <FileCheck2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold">Pajak Mati & BPKB Belum Balik Nama</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Pajak kendaraan mati atau telat bertahun-tahun? BPKB masih atas nama orang lain? Tim kami siap membantu pendampingan pengurusannya.
-              </p>
-            </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Pengajuan pinjaman melalui mitra resmi memberikan Anda keuntungan konsultasi taksiran akurat lebih awal, verifikasi kelengkapan berkas yang fleksibel, dan pendampingan berkas prioritas di cabang.
+                </p>
 
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center">
-                <ThumbsUp className="w-6 h-6" />
+                <div className="space-y-2 text-xs text-slate-200 pt-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0" />
+                    <span>Konsultasi gratis & hitung simulasi via WhatsApp</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0" />
+                    <span>Bisa jemput berkas atau datang langsung ke cabang</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#049851] shrink-0" />
+                    <span>Respon cepat dan ramah setiap hari</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-bold">Kendaraan Tetap Milik Anda</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Hanya BPKB yang diagunkan. Mobil atau motor Anda tetap bebas Anda gunakan sehari-hari untuk operasional kantor, usaha, atau keluarga.
-              </p>
-            </div>
 
-            <div className="bg-slate-800/70 p-6 rounded-2xl border border-slate-700/80 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-rose-600/20 text-rose-400 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6" />
+              <div className="pt-6 mt-6 border-t border-blue-900/60">
+                <a
+                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%2C%20saya%20ingin%20konsultasi%20pengajuan%20dana%20tunai%20jaminan%20BPKB.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center space-x-2 bg-[#049851] hover:bg-[#067A42] text-white font-semibold py-3.5 px-5 rounded-[12px] transition-colors text-sm cursor-pointer shadow-soft"
+                >
+                  <PhoneCall className="w-4 h-4" />
+                  <span>Konsultasi WhatsApp: {SITE_CONFIG.phone}</span>
+                </a>
               </div>
-              <h3 className="text-lg font-bold">Pendampingan Agen Resmi</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Anda dibimbing langsung oleh mitra resmi terdaftar ({SITE_CONFIG.agentName}), mulai dari taksiran awal hingga dana berhasil dicairkan.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* 4 LANGKAH MUDAH PENGAJUAN */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-            PROSEDUR PENGAJUAN
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-how-it-works-title">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-2.5">
+          <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#E8F8F0] px-3.5 py-1 rounded-full border border-emerald-200">
+            Alur Pengajuan Dana
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            4 Langkah Mudah Dana Cair ke Rekening
+          <h2 id="section-how-it-works-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A335D] tracking-tight">
+            4 Langkah Mudah Hingga Dana Cair ke Rekening
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Tanpa perlu repot antre panjang, semua proses awal bisa dilakukan secara online dari HP Anda.
+          <p className="text-sm sm:text-base text-[#64748B]">
+            Proses awal cepat dan praktis cukup dari ponsel Anda tanpa antrean panjang.
           </p>
         </div>
 
@@ -317,31 +437,74 @@ export default function HomePage() {
           {HOW_IT_WORKS.map((step, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative group hover:border-blue-400 hover:shadow-lg transition-all"
+              className="bg-white p-6 rounded-[12px] border border-[#E2E8F0] shadow-soft relative group hover:border-slate-300 transition-colors"
             >
-              <div className="text-3xl font-black text-blue-600/30 group-hover:text-blue-600 transition-colors mb-2">
+              <div className="text-sm font-bold text-white bg-dna-gradient w-8 h-8 rounded-[8px] flex items-center justify-center mb-4 shadow-sm">
                 {step.step}
               </div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">{step.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+              <h3 className="font-heading font-bold text-[#0A335D] text-base mb-2">{step.title}</h3>
+              <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* TESTIMONIALS SECTION (E-E-A-T & SOCIAL PROOF) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-testimonials-title">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-2.5">
+          <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#E8F8F0] px-3.5 py-1 rounded-full border border-emerald-200">
+            Bukti Kepuasan Nasabah
+          </span>
+          <h2 id="section-testimonials-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A335D] tracking-tight">
+            Pengalaman Nasabah Pinjaman Gadai BPKB
+          </h2>
+          <p className="text-sm sm:text-base text-[#64748B]">
+            Ratusan nasabah telah merasakan kemudahan pencairan dana tunai jaminan BPKB bersama kami.
+          </p>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((testi, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-[12px] p-6 sm:p-7 border border-[#E2E8F0] shadow-soft flex flex-col justify-between"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center space-x-1 text-amber-400">
+                  {[...Array(testi.rating)].map((_, rIdx) => (
+                    <Star key={rIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-xs sm:text-sm text-[#0F172A] italic leading-relaxed">
+                  &ldquo;{testi.comment}&rdquo;
+                </p>
+              </div>
+
+              <div className="pt-5 mt-5 border-t border-[#E2E8F0] flex items-center justify-between">
+                <div>
+                  <h3 className="font-heading font-bold text-sm text-[#0A335D]">{testi.name}</h3>
+                  <p className="text-xs text-[#64748B]">{testi.location}</p>
+                  <span className="inline-block mt-1 text-[11px] font-semibold text-[#049851] bg-[#E8F8F0] px-2 py-0.5 rounded">
+                    {testi.amount} ({testi.loanType})
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* FAQ SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-            PERTANYAAN UMUM
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="section-faq-title">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-2.5">
+          <span className="text-xs font-semibold text-[#049851] uppercase tracking-wider bg-[#E8F8F0] px-3.5 py-1 rounded-full border border-emerald-200">
+            Pusat Informasi & FAQ
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+          <h2 id="section-faq-title" className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#0A335D] tracking-tight">
             Pertanyaan yang Sering Diajukan (FAQ)
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Pelajari segala hal mengenai syarat, keamanan BPKB, dan mekanisme pencairan dana.
+          <p className="text-sm sm:text-base text-[#64748B]">
+            Pelajari ketentuan syarat kendaraan, keamanan dokumen BPKB, dan mekanisme pencairan dana tunai.
           </p>
         </div>
 
@@ -350,34 +513,30 @@ export default function HomePage() {
 
       {/* BOTTOM CONVERSION CTA BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-white/5 rounded-full blur-2xl pointer-events-none" />
-
-          <div className="relative z-10 max-w-2xl space-y-5 text-center sm:text-left">
-            <span className="inline-block bg-white/20 text-blue-100 text-xs font-bold px-3 py-1 rounded-full">
+        <div className="bg-[#0A335D] rounded-[20px] p-8 sm:p-12 text-white shadow-modal border border-blue-950">
+          <div className="max-w-2xl space-y-4 text-center sm:text-left">
+            <span className="inline-block bg-[#061F38] text-[#049851] text-xs font-semibold px-3.5 py-1 rounded-full border border-blue-900/60">
               Pelayanan Cepat & Fast Respon
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
-              Butuh Dana Mendesak Hari Ini? Konsultasikan Sekarang Tanpa Ribet!
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold tracking-tight leading-tight">
+              Butuh Dana Mendesak? Konsultasikan Sekarang Tanpa Ribet
             </h2>
-            <p className="text-sm sm:text-base text-blue-100 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
               Tim kami siap membantu pengecekan taksiran harga kendaraan, kelengkapan berkas, dan memandu pengajuan hingga dana cair ke rekening Anda.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
               <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%20Mas%20${encodeURIComponent(
-                  SITE_CONFIG.agentName
-                )}%2C%20saya%20butuh%20dana%20tunai%20segera.%20Bisa%20bantu%20proses%20pengajuannya%3F`}
+                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Halo%2C%20saya%20butuh%20dana%20tunai%20segera.%20Bisa%20bantu%20proses%20pengajuannya%3F`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-[#049851] hover:bg-[#067A42] text-white font-semibold py-3.5 px-7 rounded-[12px] transition-colors text-[16px] cursor-pointer shadow-soft"
               >
-                <PhoneCall className="w-5 h-5" />
-                <span>Chat WhatsApp Mas Irwan</span>
+                <PhoneCall className="w-4 h-4" />
+                <span>Chat via WhatsApp</span>
               </a>
               <Link
                 href="/cek-limit"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-3.5 px-6 rounded-xl border border-white/20 transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-[#061F38] hover:bg-[#05182B] text-white font-medium py-3.5 px-6 rounded-[12px] border border-blue-900/60 transition-colors text-[16px]"
               >
                 <span>Isi Form Pengajuan</span>
               </Link>

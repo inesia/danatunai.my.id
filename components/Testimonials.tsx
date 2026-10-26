@@ -18,7 +18,7 @@ const TESTIMONIAL_DATA: TestimonialItem[] = [
     vehicle: "Toyota Avanza 1.3 G (2018)",
     disbursedAmount: "Rp 95.000.000",
     purpose: "Penambahan Stok Semen & Material",
-    review: "Pendampingan Mas Irwan sangat membantu. Dari taksiran awal sampai survei unit sangat transparan. Hari Senin berkas masuk, Selasa siang dana sudah ditransfer utuh ke rekening tanpa potongan liar.",
+    review: "Pendampingan tim konsultan sangat membantu. Dari taksiran awal sampai survei unit sangat transparan. Hari Senin berkas masuk, Selasa siang dana sudah ditransfer utuh ke rekening tanpa potongan liar.",
   },
   {
     name: "Siti Rahmawati",

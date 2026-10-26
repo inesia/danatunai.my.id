@@ -32,7 +32,9 @@ Platform landing page dan kalkulator simulasi pinjaman dana tunai jaminan BPKB M
 ### 1. Konfigurasi Environment (`.env.local`)
 Buka file `.env.local` dan sesuaikan nomor WhatsApp serta ID Meta Pixel Anda:
 ```env
-NEXT_PUBLIC_WA_NUMBER=6281234567890
+NEXT_PUBLIC_WA_NUMBER=6287814352424
+NEXT_PUBLIC_PHONE="+62 878-1435-2424"
+NEXT_PUBLIC_EMAIL="halo@danatunai.my.id"
 NEXT_PUBLIC_AGENT_NAME="Irwan Dharmawan"
 NEXT_PUBLIC_SITE_NAME="DanaTunai.my.id"
 NEXT_PUBLIC_SITE_URL="https://danatunai.my.id"
