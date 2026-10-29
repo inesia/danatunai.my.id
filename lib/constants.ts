@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   whatsappNumber: process.env.NEXT_PUBLIC_WA_NUMBER || "6287814352424",
   email: process.env.NEXT_PUBLIC_EMAIL || "halo@danatunai.my.id",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://danatunai.my.id",
-  metaPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID || "",
+  metaPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID || "1787436219201416",
   tagline: "Pinjaman Dana Tunai Jaminan BPKB Mobil & Motor Cepat & Resmi BFI Finance",
   description: "Dapatkan pinjaman dana tunai jaminan BPKB Mobil & Motor proses cepat 1 hari cair, bunga rendah mulai 0.6%, plafon tinggi hingga 85% nilai kendaraan, resmi berizin & diawasi OJK.",
 };
