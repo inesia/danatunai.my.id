@@ -9,11 +9,11 @@ import { SITE_CONFIG } from "@/lib/constants";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.siteUrl),
   title: {
-    default: "DanaTunai.my.id — Pinjaman Gadai BPKB Mobil & Motor Resmi BFI Finance",
+    default: "DanaTunai.my.id — Layanan Informasi & Konsultasi BPKB Mobil & Motor Mitra Resmi BFI Finance",
     template: "%s | DanaTunai.my.id - Mitra BFI Finance",
   },
   description:
-    "Pinjaman dana tunai jaminan BPKB Mobil & Motor proses cepat 1 hari cair, bunga rendah mulai 0.6%, plafon pencairan hingga 85% taksiran kendaraan. Resmi berizin & diawasi OJK.",
+    "Platform layanan informasi dan konsultasi estimasi nilai jaminan BPKB Mobil & Motor resmi bermitra dengan PT BFI Finance Indonesia Tbk. Resmi berizin & diawasi OJK.",
   keywords: [
     "gadai bpkb mobil",
     "gadai bpkb motor",
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     "mitra resmi bfi finance",
     "kredit jaminan bpkb",
     "pengajuan pinjaman bpkb online",
-    "pinjaman cepat cair 1 hari",
     "taksiran nilai bpkb mobil",
   ],
   authors: [{ name: SITE_CONFIG.agentName, url: SITE_CONFIG.siteUrl }],
@@ -38,24 +37,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     url: SITE_CONFIG.siteUrl,
-    title: "DanaTunai.my.id — Pinjaman Dana Cepat BPKB Mobil & Motor",
+    title: "DanaTunai.my.id — Informasi & Konsultasi BPKB Mobil & Motor",
     description:
-      "Dapatkan dana tunai hingga miliaran rupiah dengan agunan BPKB Mobil atau Motor. Bunga ringan mulai 0.6%, proses 1 hari cair, resmi diawasi OJK bersama mitra BFI Finance.",
+      "Layanan konsultasi estimasi nilai pinjaman agunan BPKB Mobil dan Motor resmi bermitra dengan PT BFI Finance Indonesia Tbk.",
     siteName: SITE_CONFIG.name,
     images: [
       {
         url: "/logo.png",
         width: 800,
         height: 600,
-        alt: "DanaTunai.my.id — Pinjaman Gadai BPKB Mobil & Motor Resmi BFI Finance",
+        alt: "DanaTunai.my.id — Mitra Resmi BFI Finance",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DanaTunai.my.id — Pinjaman Dana Cepat BPKB Mobil & Motor",
+    title: "DanaTunai.my.id — Informasi & Konsultasi BPKB Mobil & Motor",
     description:
-      "Cair kilat 1 hari, bunga ringan mulai 0.6%, resmi diawasi OJK bersama mitra BFI Finance.",
+      "Layanan konsultasi estimasi nilai pinjaman agunan BPKB Mobil dan Motor resmi bermitra dengan PT BFI Finance Indonesia Tbk.",
     images: ["/logo.png"],
   },
   robots: {
@@ -122,30 +121,6 @@ export default function RootLayout({
         "closes": "22:00",
       },
     ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Layanan Pembiayaan BPKB",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pinjaman Gadai BPKB Mobil",
-            "description":
-              "Pencairan dana hingga 85% nilai pasar mobil, bunga mulai 0.6% flat per bulan, proses 1 hari kerja.",
-          },
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pinjaman Gadai BPKB Motor",
-            "description":
-              "Pinjaman kilat 1-2 jam cair dengan jaminan BPKB Motor Honda, Yamaha, Kawasaki, Suzuki.",
-          },
-        },
-      ],
-    },
   };
 
   return (

@@ -49,13 +49,13 @@ export default function Footer() {
               <li>
                 <Link href="/bpkb-motor" className="hover:text-white transition-colors flex items-center space-x-1.5">
                   <span className="text-[#049851] font-bold">&rsaquo;</span>
-                  <span>Gadai BPKB Motor Kilat 1 Jam</span>
+                  <span>Gadai BPKB Motor</span>
                 </Link>
               </li>
               <li>
                 <Link href="/cek-limit" className="hover:text-white transition-colors flex items-center space-x-1.5">
                   <span className="text-[#049851] font-bold">&rsaquo;</span>
-                  <span>Form Pengajuan Dana Tunai Online</span>
+                  <span>Cek Estimasi Limit BPKB Online</span>
                 </Link>
               </li>
               <li>
@@ -157,7 +157,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-1">
               <Link href="/bpkb-mobil" className="hover:text-white transition-colors">Gadai BPKB Mobil</Link>
               <Link href="/bpkb-motor" className="hover:text-white transition-colors">Gadai BPKB Motor</Link>
-              <Link href="/cek-limit" className="hover:text-white transition-colors">Form Pengajuan</Link>
+              <Link href="/cek-limit" className="hover:text-white transition-colors">Cek Estimasi Limit</Link>
               <Link href="/kebijakan-privasi" className="text-emerald-400 hover:text-white transition-colors font-medium">Kebijakan Privasi</Link>
             </div>
           </div>

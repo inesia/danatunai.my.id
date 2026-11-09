@@ -70,12 +70,25 @@ export default function KebijakanPrivasiPage() {
     ],
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Kebijakan Privasi — DanaTunai.my.id",
+    description:
+      "Kebijakan Privasi DanaTunai.my.id menjelaskan ketentuan pengumpulan, penggunaan, dan perlindungan data pribadi pengunjung serta pengguna formulir layanan.",
+    url: `${SITE_CONFIG.siteUrl}/kebijakan-privasi`,
+  };
+
   return (
     <div className="py-8 md:py-12">
       {/* Schema Injection */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

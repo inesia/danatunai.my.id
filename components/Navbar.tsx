@@ -16,7 +16,7 @@ export default function Navbar() {
     { label: "Beranda", href: "/" },
     { label: "BPKB Mobil", href: "/bpkb-mobil", icon: Car },
     { label: "BPKB Motor", href: "/bpkb-motor", icon: Bike },
-    { label: "Form Pengajuan", href: "/cek-limit", icon: FileText },
+    { label: "Cek Estimasi Limit", href: "/cek-limit", icon: FileText },
   ];
 
   return (
