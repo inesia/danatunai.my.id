@@ -58,6 +58,12 @@ export default function Footer() {
                   <span>Form Pengajuan Dana Tunai Online</span>
                 </Link>
               </li>
+              <li>
+                <Link href="/kebijakan-privasi" className="hover:text-white transition-colors flex items-center space-x-1.5">
+                  <span className="text-[#049851] font-bold">&rsaquo;</span>
+                  <span>Kebijakan Privasi</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -148,10 +154,11 @@ export default function Footer() {
             <div>
               &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Seluruh Hak Cipta Dilindungi.
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-1">
               <Link href="/bpkb-mobil" className="hover:text-white transition-colors">Gadai BPKB Mobil</Link>
               <Link href="/bpkb-motor" className="hover:text-white transition-colors">Gadai BPKB Motor</Link>
               <Link href="/cek-limit" className="hover:text-white transition-colors">Form Pengajuan</Link>
+              <Link href="/kebijakan-privasi" className="text-emerald-400 hover:text-white transition-colors font-medium">Kebijakan Privasi</Link>
             </div>
           </div>
         </div>

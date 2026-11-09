@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Car, Bike, Truck, Send, ShieldCheck, CheckCircle2, Lock, Clock } from "lucide-react";
 import { openWhatsAppChat } from "@/lib/whatsapp";
 
@@ -235,7 +236,11 @@ export default function QuickApplicationForm({
             <span>Cek Taksiran & Konsultasi via WhatsApp</span>
           </button>
           <p className="text-[11px] text-center text-[#64748B] mt-2">
-            Konsultasi 100% gratis & tanpa potongan biaya pendaftaran awal.
+            Konsultasi 100% gratis & tanpa biaya pendaftaran. Dengan mengisi formulir, Anda menyetujui{" "}
+            <Link href="/kebijakan-privasi" className="text-[#0A335D] underline font-medium hover:text-[#049851]">
+              Kebijakan Privasi
+            </Link>{" "}
+            kami.
           </p>
         </div>
 
